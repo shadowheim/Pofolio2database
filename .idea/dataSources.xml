@@ -6,7 +6,7 @@
       <synchronize>true</synchronize>
       <remarks>Database of students and their grades</remarks>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:identifier.sqlite</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\kaiyi\Desktop\pofolio2\database\pofolio2database.dbsqlite</jdbc-url>
       <driver-properties>
         <property name="enable_load_extension" value="true" />
       </driver-properties>
