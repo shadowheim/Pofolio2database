@@ -43,10 +43,11 @@ INSERT INTO Students (Name, City) values
 ('Theis Thomasen','Tølløse'),
 ('Janet Jensen','Jyllinge');
 
-insert into Instructor (Name) values ('Line'), ('Ebbe');
+insert into Instructor (Name) values
+('Line'),
+('Ebbe');
 
-INSERT INTO Course (
-    NAME,
-    InstructorID
-) values
-('SD 2019 autumn', 1),('SD 2020 spring', 1),('ES1 2019 autumn', 2);
+INSERT INTO Course (NAME,InstructorID) values
+('SD 2019 autumn', 1),
+('SD 2020 spring', 1),
+('ES1 2019 autumn', 2);
