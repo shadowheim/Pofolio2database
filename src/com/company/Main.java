@@ -7,26 +7,21 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.printf("Want to check students average? (y/n) ");
+        System.out.printf("Press (s) to get student average, (c) or other for course ");
         try {
-            char type = (char) System.in.read();
-            switch (type) {
-                case 'y':
-                case 'n':
-                    System.out.printf("Select the ID of what you wanted printed: ");
-                    Scanner scanner = new Scanner(System.in);
-                    int selectedID = scanner.nextInt();
+            GradeType type = GradeType.fromInt((char) System.in.read());
 
-                    Connection cnct = null;
-                    String sqlite = "jdbc:sqlite:database/pofolio2database.dbsqlite";
+            System.out.printf("Select the ID of what you wanted printed: ");
+            Scanner scanner = new Scanner(System.in);
+            int selectedID = scanner.nextInt();
 
-                    cnct = DriverManager.getConnection(sqlite);
-                    Statement stmt = cnct.createStatement();
-                    System.out.println("The sudent has an average of " + avgGrade(selectedID, stmt,GradeType.fromInt(type)));
-                    break;
-                default:
-                    System.out.printf("This is going to be weird!");
-            }
+            Connection cnct = null;
+            String sqlite = "jdbc:sqlite:database/pofolio2database.dbsqlite";
+
+            cnct = DriverManager.getConnection(sqlite);
+            Statement stmt = cnct.createStatement();
+            System.out.println("The " + type.getRaw() + " has an average of " + avgGrade(selectedID, stmt,type));
+
         }catch(IOException e) {
             System.out.println("I asked you to pick if you wanted the grade or the student");
         } catch(SQLException e) {
