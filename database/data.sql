@@ -19,7 +19,13 @@ CREATE table IF NOT EXISTS Grades
 );
 CREATE table IF NOT EXISTS Course (
     CourseID INTEGER primary key autoincrement,
+    InstructorID INTEGER,
     Name VARCHAR
+    FOREIGN KEY (Instructor) REFERENCES
+);
+CREATE TABLE IF NOT EXISTS Instructor (
+    InstructorID INTEGER PRIMARY KEY autoincrement,
+    Name VARCHAR,
 );
 INSERT INTO Students (Name, City) values
     ('Aisha Lincoln', 'Nykøbing F'),
@@ -32,4 +38,13 @@ INSERT INTO Students (Name, City) values
     ('Salma Simonsen','Stockholm'),
     ('Theis Thomasen','Tølløse'),
     ('Janet Jensen','Jyllinge')
-INSERT INTO Grades (StudentID, )
+
+insert into Instructor (Name) values ('Line'), ('Ebbe');
+
+INSERT INTO Course (
+    NAME,
+    InstructorID
+) values
+(SD 2019 autumn, 0),(SD 2020 spring, 0),(ES1 2019 autumn, 1);
+
+INSERT INTO Grades (StudentID, CourseID, InstructorID, Grade);
