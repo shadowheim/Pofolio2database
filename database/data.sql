@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS Students;
 DROP TABLE IF EXISTS Grades;
 DROP TABLE IF EXISTS Course;
+DROP TABLE IF EXISTS Instructor;
 
 CREATE table IF NOT EXISTS Students (
     StudentID INTEGER primary key autoincrement,
@@ -12,7 +13,6 @@ CREATE table IF NOT EXISTS Grades
     GradeID      INTEGER primary key autoincrement ,
     CourseID     INTEGER,
     StudentID    INTEGER,
-    InstructorID INTEGER,
     Grade        INTEGER,
     foreign key (CourseID) REFERENCES Course (CourseID),
     foreign key (StudentID) REFERENCES Students (StudentID),
