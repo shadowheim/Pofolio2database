@@ -10,12 +10,12 @@ public class Main {
         System.out.println("What's the students id you want grade average on? ");
         int studentID = scanner.nextInt();
 
-        Connection conn;
+        Connection cnct;
         String sqlite = "jdbc:sqlite:database/pofolio2database.dbsqlite";
 
         try {
-            conn = DriverManager.getConnection(sqlite);
-            Statement stmt = conn.createStatement();
+            cnct = DriverManager.getConnection(sqlite);
+            Statement stmt = cnct.createStatement();
             String query = "SELECT * FROM Student where ID ="+studentID;
             ResultSet res = stmt.executeQuery(query);
             System.out.println(res.getString("Name") + " got " + res.getInt("grade") + " in " + res.getString("Course"));
