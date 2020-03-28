@@ -21,13 +21,39 @@ public class Main {
             cnct = DriverManager.getConnection(sqlite);
             Statement stmt = cnct.createStatement();
             System.out.println("The " + type.getRaw() + " has an average of " + avgGrade(selectedID, stmt,type));
-
+            switch (type){
+                case Student:
+                    String query = "select GradeID, CourseID from Grades where StudentID=" + selectedID + " and Grade IS NULL";
+                    ResultSet res = stmt.executeQuery(query);
+                        int courseID = res.getInt("CourseID");
+                        String course = courseFromGrade(courseID, stmt);
+                        System.out.printf("The student hasn't been graded in "+ course + " want to change that? ");
+                        switch ((char) scanner.nextInt())
+                        {
+                            case 'y':
+                                System.out.printf("What's the new grade going to be? ");
+                                int newGrade = scanner.nextInt();
+                                query = "UPDATE Grades SET Grade="+newGrade+" WHERE GradeID="+course;
+                                stmt.executeUpdate(query);
+                        }
+                    }
         }catch(IOException e) {
             System.out.println("I asked you to pick if you wanted the grade or the student");
         } catch(SQLException e) {
             e.printStackTrace();
         }
     }
+
+    static String courseFromGrade(int selectedID, Statement statement) throws SQLException{
+        String query = "SELECT Name from Course WHERE CourseID="+ selectedID;
+        try {
+            ResultSet res = statement.executeQuery(query);
+            return res.getString("Name");
+        }catch (SQLException e) {
+            throw e;
+        }
+    }
+
     static int avgGrade(int selectedID, Statement statement, GradeType type) throws SQLException {
         String query = "SELECT AVG(Grade) FROM Grades where " + type.getType() + " ="+selectedID;
         try {
