@@ -1,4 +1,4 @@
 introduction.md
+diagram.md
 code.md
 github.md
-diagram.md
