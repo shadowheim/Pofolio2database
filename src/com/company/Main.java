@@ -34,8 +34,9 @@ public class Main {
                             case 'y':
                                 System.out.printf("What's the new grade going to be? ");
                                 int newGrade = scanner.nextInt();
-                                int gradeID = res.getInt("GradeID");
-                                query = "UPDATE Grades SET Grade="+newGrade+" WHERE GradeID="+gradeID;
+                                // This assumes one student only has one grade per course.
+                                // Of course not scalable if a course suddenly decides to issue multiple grades.
+                                query = "UPDATE Grades SET Grade="+newGrade+" WHERE CourseID="+courseID+" AND StudentID="+selectedID;
                                 stmt.executeUpdate(query);
                         }
                     }
