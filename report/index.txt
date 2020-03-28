@@ -1,4 +1,4 @@
-markdown/introduction.md
-markdown/code.md
-markdown/github.md
-markdown/diagram.md
+introduction.md
+code.md
+github.md
+diagram.md
