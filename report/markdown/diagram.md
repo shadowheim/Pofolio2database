@@ -1,4 +1,4 @@
 \chapter{Diagrams}
 # ER Diagram
 
-![ER Diagram](image/ERD_3.png)
+![ER Diagram](images/ERD_3.png)
