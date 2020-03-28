@@ -1,4 +1,4 @@
-# Introduction
+\chapter{Introduction}
 
 For this assignment we had to design a database system for student course registration
 
