@@ -1,5 +1,6 @@
-\chapter{The Code}
-# The Code Itself
+# The Code
+
+## The Code Itself
 
 The Java program has been made in such a way that the program asks the user what they want to know. The user is then able input a certain value that the program asked for.
 
