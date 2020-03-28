@@ -25,19 +25,22 @@ public class Main {
                 case Student:
                     String query = "select GradeID, CourseID from Grades where StudentID=" + selectedID + " and Grade IS NULL";
                     ResultSet res = stmt.executeQuery(query);
+                    while(res.next()) {
                         int courseID = res.getInt("CourseID");
                         String course = courseFromGrade(courseID, stmt);
                         System.out.printf("The student hasn't been graded in "+ course + " want to change that? ");
-                        switch ((char) scanner.nextInt())
+                        switch ((char) System.in.read())
                         {
                             case 'y':
                                 System.out.printf("What's the new grade going to be? ");
                                 int newGrade = scanner.nextInt();
-                                query = "UPDATE Grades SET Grade="+newGrade+" WHERE GradeID="+course;
+                                int gradeID = res.getInt("GradeID");
+                                query = "UPDATE Grades SET Grade="+newGrade+" WHERE GradeID="+gradeID;
                                 stmt.executeUpdate(query);
                         }
                     }
-        }catch(IOException e) {
+            }
+        } catch(IOException e) {
             System.out.println("I asked you to pick if you wanted the grade or the student");
         } catch(SQLException e) {
             e.printStackTrace();
