@@ -21,6 +21,9 @@ public class Main {
             cnct = DriverManager.getConnection(sqlite);
             Statement stmt = cnct.createStatement();
             System.out.println("The " + type.getRaw() + " has an average of " + avgGrade(selectedID, stmt,type));
+            
+            // If the requested average is a student, check to see if they have any missing grades, and give the user 
+            // the ability to add grades to any missing
             switch (type){
                 case Student:
                     String query = "select GradeID, CourseID from Grades where StudentID=" + selectedID + " and Grade IS NULL";
